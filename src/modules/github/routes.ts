@@ -1,7 +1,7 @@
 import Router from '@koa/router'
 import * as HttpStatus from 'http-status'
 import { Context } from 'koa'
-import { getPullRequests } from './http'
+import * as GithubHttp from './http'
 
 const router = new Router()
 
@@ -10,7 +10,10 @@ router.get('/', getAll)
 async function getAll(ctx: Context) {
   console.log(ctx.request.body)
 
-  const pullRequestResponse = await getPullRequests('stevenmays', 'vacaro')
+  const pullRequestResponse = await GithubHttp.getPullRequests({
+    owner: 'stevenmays',
+    repo: 'vacaro',
+  })
 
   const pullRequests = pullRequestResponse.data.map((pullRequest) => ({
     id: pullRequest.id,

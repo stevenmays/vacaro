@@ -1,10 +1,4 @@
-import axios, * as Axios from 'axios'
-import { PullRequest } from './types'
-
-export function getPullRequests(owner: string, repo: string) {
-  const uri = `${githubBaseUri()}/repos/${owner}/${repo}/pulls`
-  return axios.get<PullRequest[]>(uri, { ...getHeaders() })
-}
+import * as Axios from 'axios'
 
 export function githubBaseUri() {
   return 'https://api.github.com'
