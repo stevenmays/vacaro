@@ -1,0 +1,15 @@
+{
+  "extends": "@tsconfig/node18/tsconfig.json",
+  "compileOnSave": true,
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "CommonJS",
+    "esModuleInterop": true,
+    "checkJs": false,
+    "strictNullChecks": false,
+    "noImplicitAny": true,
+    "useUnknownInCatchVariables": false,
+    "outDir": "dist"
+  },
+  "include": ["src"]
+}

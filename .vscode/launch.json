@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug index.ts",
+      "request": "launch",
+      "cwd": "${workspaceRoot}",
+      "type": "node",
+      "resolveSourceMapLocations": ["${workspaceFolder}/**", "!**/node_modules/**"],
+      "runtimeArgs": ["-r", "ts-node/register"],
+      "args": ["${workspaceRoot}/src/index.ts"]
+    }
+  ]
+}
