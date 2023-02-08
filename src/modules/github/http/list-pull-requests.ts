@@ -2,7 +2,7 @@ import axios from 'axios'
 import * as GithubTypes from '../types'
 import { getHeaders, githubBaseUri } from './base'
 
-export interface GetPullRequestInput {
+export interface ListPullRequestInput {
   /**
    * the repo name
    * @example "vacaro"
@@ -21,7 +21,7 @@ export interface GetPullRequestInput {
  *
  * @link https://docs.github.com/en/rest/pulls/pulls#list-pull-requests
  */
-export function listPullRequests(input: GetPullRequestInput) {
+export function listPullRequests(input: ListPullRequestInput) {
   const uri = `${githubBaseUri()}/repos/${input.owner}/${input.repo}/pulls`
   return axios.get<GithubTypes.PullRequest[]>(uri, { ...getHeaders() })
 }
