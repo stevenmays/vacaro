@@ -1,2 +1,2 @@
 export * from './base'
-export * from './get-pull-requests'
+export * from './list-pull-requests'

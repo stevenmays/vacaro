@@ -21,7 +21,7 @@ export interface GetPullRequestInput {
  *
  * @link https://docs.github.com/en/rest/pulls/pulls#list-pull-requests
  */
-export function getPullRequests(input: GetPullRequestInput) {
+export function listPullRequests(input: GetPullRequestInput) {
   const uri = `${githubBaseUri()}/repos/${input.owner}/${input.repo}/pulls`
   return axios.get<GithubTypes.PullRequest[]>(uri, { ...getHeaders() })
 }

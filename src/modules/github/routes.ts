@@ -10,7 +10,7 @@ router.get('/', getAll)
 async function getAll(ctx: Context) {
   console.log(ctx.request.body)
 
-  const pullRequestResponse = await GithubHttp.getPullRequests({
+  const pullRequestResponse = await GithubHttp.listPullRequests({
     owner: 'stevenmays',
     repo: 'vacaro',
   })
