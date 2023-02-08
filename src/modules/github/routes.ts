@@ -12,7 +12,7 @@ async function getAll(ctx: Context) {
 
   const pullRequestResponse = await getPullRequests('stevenmays', 'vacaro')
 
-  const pullRequests = pullRequestResponse.data.map((pullRequest: Record<string, any>) => ({
+  const pullRequests = pullRequestResponse.data.map((pullRequest) => ({
     id: pullRequest.id,
     number: pullRequest.number,
     title: pullRequest.title,
