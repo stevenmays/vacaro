@@ -10,9 +10,16 @@ router.get('/', getAll)
 async function getAll(ctx: Context) {
   console.log(ctx.request.body)
 
-  const pullRequests = await getPullRequests('stevenmays', 'vacaro')
+  const pullRequestResponse = await getPullRequests('stevenmays', 'vacaro')
 
-  ctx.body = { data: pullRequests.data }
+  const pullRequests = pullRequestResponse.data.map((pullRequest: Record<string, any>) => ({
+    id: pullRequest.id,
+    number: pullRequest.number,
+    title: pullRequest.title,
+    author: pullRequest.user.login,
+  }))
+
+  ctx.body = { data: pullRequests }
   ctx.status = HttpStatus.OK
 }
 
