@@ -4,7 +4,7 @@ import parseLinkHeader from 'parse-link-header'
 import * as GithubHttp from './http'
 import * as GithubTypes from './types'
 
-export interface GetAllRequestDto {
+export interface GetAllDto {
   owner: string
   repo: string
 }
@@ -23,11 +23,10 @@ export interface Response {
 }
 
 export async function getAll(ctx: Context) {
-  console.log(ctx.request.body)
+  const input = ctx.request.body
 
-  const input = {
-    owner: 'stevenmays',
-    repo: 'meridian',
+  if (!isGetAllRequestDto(input)) {
+    throw new Error('Body missing required params')
   }
 
   const pullRequestResponse = await GithubHttp.listPullRequests({
@@ -66,6 +65,17 @@ export async function getAll(ctx: Context) {
 
   ctx.body = { data: pullRequests }
   ctx.status = HttpStatus.OK
+}
+
+function isGetAllRequestDto(value: any): value is GetAllDto {
+  return (
+    value !== null &&
+    typeof value === 'object' &&
+    value.owner &&
+    typeof value.owner === 'string' &&
+    value.repo &&
+    typeof value.repo === 'string'
+  )
 }
 
 /**
