@@ -2,11 +2,13 @@ import Koa from 'koa'
 import bodyParser from 'koa-bodyparser'
 import helmet from 'koa-helmet'
 import logger from 'koa-logger'
+import * as Middleware from './middleware'
 import routes from './routes'
 
 const app = new Koa()
 const port = process.env.PORT || 3000
 
+app.use(Middleware.koaErrorHandler)
 app.use(helmet())
 app.use(logger())
 app.use(bodyParser())

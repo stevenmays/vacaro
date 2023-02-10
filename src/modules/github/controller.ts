@@ -1,6 +1,7 @@
 import HttpStatus from 'http-status'
 import { Context } from 'koa'
 import parseLinkHeader from 'parse-link-header'
+import { BadRequestError } from '../../lib/error'
 import * as GithubHttp from './http'
 import * as GithubTypes from './types'
 
@@ -26,7 +27,7 @@ export async function getAll(ctx: Context) {
   const input = ctx.request.body
 
   if (!isGetAllRequestDto(input)) {
-    throw new Error('Body missing required params')
+    throw new BadRequestError('Body missing required params')
   }
 
   const pullRequestResponse = await GithubHttp.listPullRequests({
