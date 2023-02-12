@@ -68,9 +68,11 @@ export async function getAll(ctx: Context) {
   ctx.status = HttpStatus.OK
 }
 
-function isGetAllRequestDto(value: any): value is GetAllDto {
+export function isGetAllRequestDto(value: any): value is GetAllDto {
+  console.log('value', value)
   return (
     value !== null &&
+    value !== undefined &&
     typeof value === 'object' &&
     value.owner &&
     typeof value.owner === 'string' &&
@@ -83,8 +85,8 @@ function isGetAllRequestDto(value: any): value is GetAllDto {
  * Parses the Github headers, and returns the final page. This is useful if you query an endpoint,
  * and set the page and per_page parameters to one. Then the last page parameter is the total count.
  */
-function parseHeadersForPageCount(headers: GithubTypes.Headers) {
-  if (!headers.link) {
+export function parseHeadersForPageCount(headers: GithubTypes.Headers) {
+  if (!headers?.link) {
     // if there is no link property in the headers, then there is only one page, and since we've set the per_page to 1
     // and the minimum commit amount for a pull request is 1, then this must be 1.
     return 1
