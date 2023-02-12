@@ -1,13 +1,9 @@
 import * as GithubController from '../controller'
 import * as GithubTypes from '../types'
-beforeAll(async () => {
-  // do something before anything else runs
-  console.log('Jest starting!')
-})
-// close the server after each test
-afterAll(() => {
-  console.log('server closed!')
-})
+
+beforeAll(async () => {})
+
+afterAll(() => {})
 
 describe('Parse Link Header', () => {
   test('empty headers', async () => {
