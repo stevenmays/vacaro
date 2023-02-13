@@ -69,7 +69,6 @@ export async function getAll(ctx: Context) {
 }
 
 export function isGetAllRequestDto(value: any): value is GetAllDto {
-  console.log('value', value)
   return (
     value !== null &&
     value !== undefined &&
