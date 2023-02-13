@@ -21,6 +21,10 @@ If you're not using vscode, you can just run `npm run lint` and `npm run lint:fi
 1. `npm run start:dev`
 1. In VSCode, click the Debug icon, and Run `Debug index.ts`
 
+### Helpers
+
+Converted the types using this: https://transform.tools/json-to-typescript
+
 ## Usage
 
 There is simplistic body validation enabled. If you do not send the owner and repo as a body param the request will fail.
@@ -34,10 +38,6 @@ curl --request GET \
 	"repo": "vacaro"
 }'
 ```
-
-### Helpers
-
-Converted the types using this: https://transform.tools/json-to-typescript
 
 # todos
 
