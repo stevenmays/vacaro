@@ -1,6 +1,6 @@
 # vacaro
 
-reference implementation using koa, typescript with an interesting api integration
+reference implementation using koa, typescript. exposes an endpoint, which retrieves open PRs from github, and gets the number of commits per pull request.
 
 ## Development
 
